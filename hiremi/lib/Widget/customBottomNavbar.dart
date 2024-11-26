@@ -87,60 +87,53 @@ class CustomBottomNavBar extends StatelessWidget {
   Widget _buildNavItemWithBadge(BuildContext context, IconData icon,
       String label, String subLabel, int index) {
     double screenWidth = MediaQuery.of(context).size.width;
-
+    double screenHeight = MediaQuery.of(context).size.height;
     return GestureDetector(
       onTap: () => onItemTapped(index),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            width: screenWidth * 0.085,
-            height: screenWidth * 0.085,
-            decoration: BoxDecoration(
-              gradient: const LinearGradient(
-                colors: [Color(0xFF0F3CC9), Color(0xFFACC0FF)],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.21),
-                  spreadRadius: 1,
-                  blurRadius: 2,
-                  offset: const Offset(0, 1),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Color.fromARGB(255, 9, 40, 133),
+          borderRadius: BorderRadius.circular(50),
+          border: Border.all()
+        ),
+
+        child: CircleAvatar(
+          radius: screenWidth * 0.07,
+          backgroundColor: Color(0xFF0F3CC9),
+          child: CircleAvatar(
+            backgroundColor: const Color(0xffffffff),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Center(
+                  child: Icon(
+                    icon,
+                    color: Color(0xFF0188EA),
+                    size: screenWidth * 0.05,
+                  ),
+                ),
+                Text(
+                  label,
+                  style: TextStyle(
+                    fontSize: screenWidth * 0.02,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                    height: screenHeight * 0.0007,
+                  ),
+                ),
+                Text(
+                  subLabel,
+                  style: TextStyle(
+                    fontSize: screenWidth * 0.019,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.blue,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
               ],
-              borderRadius: BorderRadius.circular(screenWidth * 0.25),
-            ),
-            child: Center(
-              child: Icon(
-                icon,
-                color: Colors.white,
-                size: screenWidth * 0.05,
-              ),
             ),
           ),
-          SizedBox(height: screenWidth * 0.01),
-          Text(
-            label,
-            style: TextStyle(
-              fontSize: screenWidth * 0.025,
-              fontWeight: FontWeight.w600,
-              color: Colors.black,
-            ),
-          ),
-          Text(
-            subLabel,
-            style: TextStyle(
-              fontSize: screenWidth * 0.025,
-              fontWeight: FontWeight.w600,
-              foreground: Paint()
-                ..shader = const LinearGradient(
-                  colors: [Color(0xFF0188EA), Color(0xFFAFD7FF)],
-                ).createShader(Rect.fromLTWH(0, 0, 100, 20)),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }

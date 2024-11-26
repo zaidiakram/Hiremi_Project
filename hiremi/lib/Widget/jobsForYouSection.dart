@@ -123,7 +123,7 @@ class JobsForYouSection extends StatelessWidget {
                         children: [
                           ElevatedButton(
                             onPressed: () {
-                              // Handle apply action
+                             
                             },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.blue,

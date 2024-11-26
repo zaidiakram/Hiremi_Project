@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../screens/Drawer/help_Support.dart';
+
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
 
@@ -31,9 +33,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               color: Colors.white,
             ),
             child: IconButton(
-              onPressed: () {
-              
-              },
+              onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HelpAndSupport(),
+                  )),
               icon: const Icon(
                 Icons.notifications_none_outlined,
                 color: Colors.black,

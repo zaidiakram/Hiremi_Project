@@ -31,7 +31,10 @@ class FeaturedSection extends StatelessWidget {
         GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          padding: EdgeInsets.symmetric(horizontal: padding, vertical: padding * 0.5),
+          padding: EdgeInsets.symmetric(
+            horizontal: padding,
+            vertical: padding * 0.5,
+          ),
           itemCount: featuredKeys.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
@@ -46,6 +49,7 @@ class FeaturedSection extends StatelessWidget {
               subtitle: FeaturedText.getSubtitle(key),
               imagePath: _getImagePath(key),
               gradientColors: AppColors.gradients[key]!,
+              bordercolor: AppColors.primaryColors[key] ?? Colors.black,
               onTap: () => Navigator.pushNamed(context, '/$key'),
             );
           },
@@ -80,6 +84,7 @@ class FeatureCard extends StatelessWidget {
   final String imagePath;
   final List<Color> gradientColors;
   final VoidCallback onTap;
+  final Color bordercolor;
 
   const FeatureCard({
     super.key,
@@ -88,6 +93,7 @@ class FeatureCard extends StatelessWidget {
     required this.imagePath,
     required this.gradientColors,
     required this.onTap,
+    required this.bordercolor,
   });
 
   @override
@@ -103,8 +109,12 @@ class FeatureCard extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(size.width * 0.03),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: padding, vertical: padding * 0.75),
+        padding:
+            EdgeInsets.symmetric(horizontal: padding, vertical: padding * 0.75),
         decoration: BoxDecoration(
+          border: Border.all(
+            color: bordercolor,
+          ),
           gradient: LinearGradient(
             colors: gradientColors,
             stops: const [0.4, 0.8, 0.9],
@@ -152,7 +162,8 @@ class FeatureCard extends StatelessWidget {
               flex: 2,
               child: Image.asset(
                 imagePath,
-                height: imageHeight,
+                scale: imageHeight,
+                // height: imageHeight,
                 fit: BoxFit.contain,
               ),
             ),
