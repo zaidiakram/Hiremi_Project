@@ -21,10 +21,25 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       actions: [
-        IconButton(
-          icon: const Icon(Icons.notifications_outlined, color: Colors.white),
-          onPressed: () {
-          },
+        Padding(
+          padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.01),
+          child: Container(
+            height: MediaQuery.of(context).size.height * 0.05,
+            width: MediaQuery.of(context).size.height * 0.05,
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.white,
+            ),
+            child: IconButton(
+              onPressed: () {
+              
+              },
+              icon: const Icon(
+                Icons.notifications_none_outlined,
+                color: Colors.black,
+              ),
+            ),
+          ),
         ),
       ],
     );
